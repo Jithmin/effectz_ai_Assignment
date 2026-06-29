@@ -17,47 +17,47 @@ The website was not showing a captcha verification
 
 # Demo Output
 
-# Search
+***Search***
 Logo display success
 Search button clicked
 Search input Displayed
 Entered: tee
 Results page is visible
 Found 'Seamless crew neck' on page 1
-# click the product
+***click the product***
 Clicked product: Seamless crew neck
 Add to cart icon is visible
 Product name: SEAMLESS CREW NECK
-# select size
+***select size***
 Size 'M' was selected for 'Seamless crew neck'
-# add to cart
+***add to cart***
 Add to cart button clicked
 Cart close button clicked
-# search second item
+***search second item***
 Search button clicked
 Search input Displayed
 Entered: shorts
 Results page is visible
 Found 'Carnage retro short' on page 1
-# click on the product
+***click on the product***
 Clicked product: Carnage retro short
 Add to cart icon is visible
 Product name: CARNAGE RETRO SHORT
-# select size
+***select size***
 Size 'L' was selected for 'Carnage retro short'
 Add to cart button clicked
 Cart close button clicked
-# validate the cart
+***validate the cart***
 Cart is open for validation
 [Check 1] Expected items: 2, Actual items: 2 -> OK
 [Check 2] Expected products: ['carnage retro short', 'seamless crew neck']
 [Check 2] Cart products:     ['carnage retro short', 'seamless crew neck'] -> OK
 [Check 3] Calculated sum: 8200.00, Cart total: 8200.00 -> OK
 PASS
-# checkout
+***checkout***
 Checkout button clicked
 Buy more popup closed
-# enter details
+***enter details***
 Email address entered
 tab to country
 tab to country
@@ -65,7 +65,7 @@ tab to country
 Tab to first name
 Tab to first name
 Checkout details entered
-# verify checkout details
+***verify checkout details***
 [email_address] Expected: 'jithmi328@gmail.com', Actual: 'jithmi328@gmail.com' -> PASS
 [first_name] Expected: 'Jithmi', Actual: 'Jithmi' -> PASS
 [last_name] Expected: 'Nanayakkara', Actual: 'Nanayakkara' -> PASS
