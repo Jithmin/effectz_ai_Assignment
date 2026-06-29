@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Cart Item List";
+}
+
+<h2>Build Your Cart List</h2>
+
+<table id="itemsTable" class="table">
+    <thead>
+        <tr><th>Name</th><th>Size</th><th></th></tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<div>
+    <input type="text" id="nameInput" placeholder="Item name" />
+    <input type="text" id="sizeInput" placeholder="Size (e.g. M)" />
+    <button id="addBtn" type="button">Add Item</button>
+</div>
+
+<button id="saveBtn" type="button">Save List</button>
+<p id="status"></p>
+
+<script>
+    const items = [];
+    const tbody = document.querySelector("#itemsTable tbody");
+
+    document.getElementById("addBtn").addEventListener("click", () => {
+        const name = document.getElementById("nameInput").value.trim();
+        const size = document.getElementById("sizeInput").value.trim();
+
+        if (!name || !size) {
+            alert("Please enter both name and size.");
+            return;
+        }
+
+        items.push({ name, size });
+        renderTable();
+
+        document.getElementById("nameInput").value = "";
+        document.getElementById("sizeInput").value = "";
+    });
+
+    function renderTable() {
+        tbody.innerHTML = "";
+        items.forEach((item, index) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${item.name}</td>
+                <td>${item.size}</td>
+                <td><button type="button" data-index="${index}" class="removeBtn">Remove</button></td>
+            `;
+            tbody.appendChild(row);
+        });
+
+        document.querySelectorAll(".removeBtn").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                const idx = parseInt(e.target.dataset.index);
+                items.splice(idx, 1);
+                renderTable();
+            });
+        });
+    }
+
+    document.getElementById("saveBtn").addEventListener("click", async () => {
+        const response = await fetch("/CartList/SaveList", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(items)
+        });
+
+        const result = await response.json();
+        document.getElementById("status").innerText =
+            response.ok ? `Saved ${result.count} items.` : "Error saving list.";
+    });
+</script>
